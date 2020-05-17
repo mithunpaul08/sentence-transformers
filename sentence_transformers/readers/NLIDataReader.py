@@ -29,7 +29,7 @@ class NLIDataReader(object):
         for sentence_a, sentence_b, label in zip(s1, s2, labels):
             guid = "%s-%d" % (filename, id)
             id += 1
-            examples.append(InputExample(guid=guid, texts=[sentence_a, sentence_b], label=self.map_label(label)))
+            examples.append(InputExample(guid=guid, texts=[sentence_a, sentence_b], label=self.map_label(label.rstrip("\n"))))
 
             if 0 < max_examples <= len(examples):
                 break
