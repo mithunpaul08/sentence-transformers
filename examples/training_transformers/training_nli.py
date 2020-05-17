@@ -69,9 +69,9 @@ train_loss = losses.SoftmaxLoss(model=model, sentence_embedding_dimension=model.
 
 
 logging.info("Read STSbenchmark dev dataset")
-dev_data = SentencesDataset(examples=sts_reader.get_examples('sts-dev.csv'), model=model)
+dev_data = SentencesDataset(nli_reader.get_examples('dev.gz'), model=model)
 dev_dataloader = DataLoader(dev_data, shuffle=False, batch_size=batch_size)
-evaluator = EmbeddingSimilarityEvaluator(dev_dataloader)
+evaluator = LabelAccuracyEvaluator(dev_dataloader)
 
 # Configure the training
 num_epochs = 1
@@ -98,8 +98,8 @@ model.fit(train_objectives=[(train_dataloader, train_loss)],
 #
 ##############################################################################
 
-model = SentenceTransformer(model_save_path)
-test_data = SentencesDataset(examples=sts_reader.get_examples("sts-test.csv"), model=model)
-test_dataloader = DataLoader(test_data, shuffle=False, batch_size=batch_size)
-evaluator = LabelAccuracyEvaluator(test_dataloader)
-model.evaluate(evaluator)
+# model = SentenceTransformer(model_save_path)
+# test_data = SentencesDataset(examples=sts_reader.get_examples("sts-test.csv"), model=model)
+# test_dataloader = DataLoader(test_data, shuffle=False, batch_size=batch_size)
+# evaluator = LabelAccuracyEvaluator(test_dataloader)
+# model.evaluate(evaluator)
