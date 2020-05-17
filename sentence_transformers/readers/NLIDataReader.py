@@ -29,7 +29,7 @@ class NLIDataReader(object):
         id = 0
         for sentence_a, sentence_b, label in zip(s1, s2, labels):
             label=label.rstrip("\n")
-            logging.info(f"label:{label}")
+            #logging.info(f"label:{label}")
             guid = "%s-%d" % (filename, id)
             id += 1
             examples.append(InputExample(guid=guid, texts=[sentence_a, sentence_b], label=self.map_label(label.rstrip("\n"))))
