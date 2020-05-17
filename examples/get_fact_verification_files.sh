@@ -50,7 +50,7 @@ FILE=datasets/rte/fnc/dev/fnc_dev_lex.jsonl
 if test -f "$FILE";then
     echo "$FILE exists"
 else
-    wget https://storage.googleapis.com/fact_verification_mithun_files/fake_news_challenge_lexicalized_datasets/used_in_emnlp2019_bert/FNC_dev_lex.jsonl -O $FILE
+    wget https://storage.googleapis.com/fact_verification_mithun_files/fake_news_challenge_lexicalized_data/used_in_emnlp2019_bert/FNC_dev_lex.jsonl -O $FILE
 fi
 
 mkdir -p datasets/rte/fnc/dev/
@@ -82,7 +82,7 @@ FILE=datasets/rte/fnc/test/fnc_test_lex.jsonl
 if test -f "$FILE";then
     echo "$FILE exists"
 else
-    wget https://storage.googleapis.com/fact_verification_mithun_files/fake_news_challenge_lexicalized_datasets/fn_test_split_fourlabels.jsonl -O $FILE
+    wget https://storage.googleapis.com/fact_verification_mithun_files/fake_news_challenge_lexicalized_data/fn_test_split_fourlabels.jsonl -O $FILE
 fi
 
 
