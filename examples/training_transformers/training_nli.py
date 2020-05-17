@@ -9,6 +9,7 @@ python training_nli.py
 OR
 python training_nli.py pretrained_transformer_model_name
 """
+from comet_ml import Experiment,ExistingExperiment
 from torch.utils.data import DataLoader
 import math
 from sentence_transformers import models, losses
@@ -18,7 +19,7 @@ from sentence_transformers.readers import *
 import logging
 from datetime import datetime
 import sys
-from comet_ml import Experiment,ExistingExperiment
+
 
 def initialize_comet():
     # for drawing graphs on comet:
