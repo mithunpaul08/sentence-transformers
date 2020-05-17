@@ -29,6 +29,11 @@ def initialize_comet():
 
     return comet_Expt_object
 
+#### Just some code to print debug information to stdout
+logging.basicConfig(format='%(asctime)s - %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    level=logging.INFO,
+                    handlers=[LoggingHandler()])
 comet_value_updater=initialize_comet()
 if (comet_value_updater) is not None:
     hyper_params = vars()
@@ -62,6 +67,7 @@ model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
 
 # Convert the dataset to a DataLoader ready for training
 logging.info("Read AllNLI train dataset")
+print("printing Read AllNLI train dataset")
 train_data = SentencesDataset(nli_reader.get_examples('train.gz'), model=model)
 train_dataloader = DataLoader(train_data, shuffle=True, batch_size=batch_size)
 train_loss = losses.SoftmaxLoss(model=model, sentence_embedding_dimension=model.get_sentence_embedding_dimension(), num_labels=train_num_labels)

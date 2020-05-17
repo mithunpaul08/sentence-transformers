@@ -47,6 +47,8 @@ class NLIDataReader(object):
         return len(self.get_labels())
 
     def map_label(self, label):
+        print(f"printin{label}g ")
+        print(label)
         logging.info(f"value of this label is {label}")
         after_strip=label.strip().lower()
         logging.info(f"value of after strip label is {after_strip}" )
