@@ -1,5 +1,6 @@
 #to run training on fever files
-pip install -r requirements.tx
+pip install -r requirements.txt
+pip install -U sentence_transformers
 ./get_convert_zip_fact_verification_file.sh
 python trainining_transformers/training_nli.py
 

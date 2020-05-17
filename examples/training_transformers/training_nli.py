@@ -14,12 +14,12 @@ from torch.utils.data import DataLoader
 import math
 from sentence_transformers import models, losses
 from sentence_transformers import SentencesDataset, LoggingHandler, SentenceTransformer
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
 from sentence_transformers.evaluation import LabelAccuracyEvaluator
 from sentence_transformers.readers import *
 import logging
 from datetime import datetime
 import sys
+from sentence_transformers.readers import NLIDataReader
 
 
 def initialize_comet():
