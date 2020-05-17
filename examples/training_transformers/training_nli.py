@@ -15,6 +15,7 @@ import math
 from sentence_transformers import models, losses
 from sentence_transformers import SentencesDataset, LoggingHandler, SentenceTransformer
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+from sentence_transformers.evaluation import LabelAccuracyEvaluator
 from sentence_transformers.readers import *
 import logging
 from datetime import datetime
@@ -100,6 +101,5 @@ model.fit(train_objectives=[(train_dataloader, train_loss)],
 model = SentenceTransformer(model_save_path)
 test_data = SentencesDataset(examples=sts_reader.get_examples("sts-test.csv"), model=model)
 test_dataloader = DataLoader(test_data, shuffle=False, batch_size=batch_size)
-evaluator = EmbeddingSimilarityEvaluator(test_dataloader)
-
+evaluator = LabelAccuracyEvaluator(test_dataloader)
 model.evaluate(evaluator)
