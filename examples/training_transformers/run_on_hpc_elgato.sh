@@ -26,8 +26,11 @@
 
 module load singularity/3.2.1
 
-cd /home/u11/mithunpaul/sentence-transformers/examples/training_transformers
-pip install -r ../../requirements.txt
+cd /home/u11/mithunpaul/sentence-transformers
+pip install -r requirements.txt
 pip install -U sentence-transformers
+cd /home/u11/mithunpaul/sentence-transformers/examples
+bash get_convert_zip_fact_verification_files.sh
+cd /home/u11/mithunpaul/sentence-transformers/examples/training_transformers
 python training_nli.py
 

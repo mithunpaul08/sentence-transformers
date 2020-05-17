@@ -1,3 +1,12 @@
+#to run training on fever files
+pip install -r requirements.tx
+./get_convert_zip_fact_verification_file.sh
+python trainining_transformers/training_nli.py
+
+or on hpc
+cd examples/training_transformers
+qsub <run_on_hpc_elgato.sh
+
 # Examples
 This folder contains various examples how to use SentenceTransformers.
 

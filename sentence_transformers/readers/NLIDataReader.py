@@ -40,8 +40,6 @@ class NLIDataReader(object):
     def get_labels():
         return {"agree": 0, "disagree": 1, "discuss": 2, "unrelated": 3}
 
-
-
     def get_num_labels(self):
         return len(self.get_labels())
 
