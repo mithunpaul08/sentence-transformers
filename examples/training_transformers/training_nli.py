@@ -71,7 +71,7 @@ train_loss = losses.SoftmaxLoss(model=model, sentence_embedding_dimension=model.
 logging.info("Read STSbenchmark dev dataset")
 dev_data = SentencesDataset(nli_reader.get_examples('dev.gz'), model=model)
 dev_dataloader = DataLoader(dev_data, shuffle=False, batch_size=batch_size)
-evaluator = LabelAccuracyEvaluator(dev_dataloader)
+evaluator = LabelAccuracyEvaluator(dev_dataloader,"dev",model)
 
 # Configure the training
 num_epochs = 1
