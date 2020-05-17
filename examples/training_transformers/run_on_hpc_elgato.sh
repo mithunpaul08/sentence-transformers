@@ -26,19 +26,8 @@
 
 module load singularity/3.2.1
 
-
-
-echo $PWD
-date
-cd ~/mean-teacher/student_teacher
-date
-echo $PWD
-
-
-pip install numpy scipy pandas nltk tqdm sklearn comet_ml gitpython
-conda install ninja pyyaml mkl mkl-include setuptools cmake cffi
-pip install torch torchvision
-
-bash get_glove.sh
-bash get_data_run.sh
+cd /home/u11/mithunpaul/sentence-transformers/examples/training_transformers
+pip install -r ../../requirements.txt
+pip install -U sentence-transformers
+python training_nli.py
 
