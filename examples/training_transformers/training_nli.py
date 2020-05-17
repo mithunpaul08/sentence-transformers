@@ -18,8 +18,14 @@ from sentence_transformers.readers import *
 import logging
 from datetime import datetime
 import sys
+import os
 
 #### Just some code to print debug information to stdout
+log_file_dir = os.path.join(os.getcwd(), 'log_dir/',)
+assert os.path.exists(log_file_dir) is True
+log_file_full_path = os.path.join(log_file_dir, 'bert.log')
+assert log_file_full_path is not None
+logging.basicConfig(filename=log_file_full_path, filemode='w+')
 logging.basicConfig(format='%(asctime)s - %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
                     level=logging.INFO,
