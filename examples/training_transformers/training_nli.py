@@ -41,7 +41,7 @@ if (comet_value_updater) is not None:
 model_name = sys.argv[1] if len(sys.argv) > 1 else 'bert-base-uncased'
 
 # Read the dataset
-batch_size = 16
+batch_size = 32
 nli_reader = NLIDataReader('../datasets/AllNLI')
 sts_reader = STSBenchmarkDataReader('../datasets/stsbenchmark')
 train_num_labels = nli_reader.get_num_labels()
