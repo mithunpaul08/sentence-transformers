@@ -25,12 +25,13 @@ log_file_dir = os.path.join(os.getcwd(), 'log_dir/',)
 assert os.path.exists(log_file_dir) is True
 log_file_full_path = os.path.join(log_file_dir, 'bert.log')
 assert log_file_full_path is not None
-logging.basicConfig(filename=log_file_full_path, filemode='w+')
+
 logging.basicConfig(format='%(asctime)s - %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
                     level=logging.INFO,
                     handlers=[LoggingHandler()])
-#### /print debug information to stdout
+logging.basicConfig(filename=log_file_full_path, filemode='w+')
+
 
 #You can specify any huggingface/transformers pre-trained model here, for example, bert-base-uncased, roberta-base, xlm-roberta-base
 model_name = sys.argv[1] if len(sys.argv) > 1 else 'bert-base-uncased'
