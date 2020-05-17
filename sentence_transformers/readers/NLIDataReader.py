@@ -38,7 +38,9 @@ class NLIDataReader(object):
 
     @staticmethod
     def get_labels():
-        return {"contradiction": 0, "entailment": 1, "neutral": 2}
+        return {"agree": 0, "disagree": 1, "discuss": 2, "unrelated": 3}
+
+
 
     def get_num_labels(self):
         return len(self.get_labels())

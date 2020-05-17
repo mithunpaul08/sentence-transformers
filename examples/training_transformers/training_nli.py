@@ -40,10 +40,10 @@ if (comet_value_updater) is not None:
 #You can specify any huggingface/transformers pre-trained model here, for example, bert-base-uncased, roberta-base, xlm-roberta-base
 model_name = sys.argv[1] if len(sys.argv) > 1 else 'bert-base-uncased'
 
+
 # Read the dataset
 batch_size = 32
-nli_reader = NLIDataReader('../datasets/AllNLI')
-sts_reader = STSBenchmarkDataReader('../datasets/stsbenchmark')
+nli_reader = NLIDataReader('../datasets/rte/fever/allnli')
 train_num_labels = nli_reader.get_num_labels()
 model_save_path = 'output/training_nli_'+model_name.replace("/", "-")+'-'+datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
