@@ -80,7 +80,7 @@ dev_dataloader = DataLoader(dev_data, shuffle=False, batch_size=batch_size)
 evaluator = LabelAccuracyEvaluator(dev_dataloader,softmax_model = train_loss,grapher=comet_value_updater)
 
 # Configure the training
-num_epochs = 1
+num_epochs = 10
 
 warmup_steps = math.ceil(len(train_dataloader) * num_epochs / batch_size * 0.1) #10% of train data for warm-up
 logging.info("Warmup-steps: {}".format(warmup_steps))
