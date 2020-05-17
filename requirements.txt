@@ -1,3 +1,4 @@
+comet_ml
 transformers>=2.8.0
 tqdm
 torch>=1.0.1
