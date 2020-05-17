@@ -1,7 +1,6 @@
 #!/bin/bash
 #PBS -q standard
-#PBS -l select=1:ncpus=16:mem=62gb:pcmem=4gb
-
+#PBS -l select=1:ncpus=16:mem=250gb:ngpus=1:pcmem=16gb
 ### Specify a name for the job
 #PBS -N elgato_
 ### Specify the group name
