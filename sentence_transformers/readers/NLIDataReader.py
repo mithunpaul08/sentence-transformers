@@ -44,4 +44,5 @@ class NLIDataReader(object):
         return len(self.get_labels())
 
     def map_label(self, label):
+        print(label)
         return self.get_labels()[label.strip().lower()]
