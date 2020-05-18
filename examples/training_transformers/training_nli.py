@@ -21,6 +21,7 @@ from datetime import datetime
 import sys
 from sentence_transformers.readers import NLIDataReader
 import os
+import torch
 
 def initialize_comet():
     # for drawing graphs on comet:
@@ -80,7 +81,8 @@ dev_data = SentencesDataset(nli_reader_fever.get_examples('dev.gz'), model=model
 dev_dataloader = DataLoader(dev_data, shuffle=False, batch_size=batch_size)
 evaluator = LabelAccuracyEvaluator(dev_dataloader,softmax_model = train_loss,grapher=comet_value_updater)
 
-
+if torch.cuda.is_available():
+    torch.cuda.set_device(2)
 
 # Configure the training
 num_epochs = 10
