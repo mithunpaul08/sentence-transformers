@@ -25,7 +25,8 @@ from sentence_transformers.readers import NLIDataReader
 def initialize_comet():
     # for drawing graphs on comet:
     comet_Expt_object=None
-    comet_Expt_object = Experiment(api_key="XUbi4cShweB6drrJ5eAKMT6FT", project_name="rte-decomp-attention")
+    comet_Expt_object = Experiment(api_key="XUbi4cShweB6drrJ5eAKMT6FT", project_name="rte-decomp-attention",log_code=False
+                                   ,log_env_details=False,display_summary_level=0,disabled=True)
 
     return comet_Expt_object
 
