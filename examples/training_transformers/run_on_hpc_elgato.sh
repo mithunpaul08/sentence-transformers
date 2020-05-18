@@ -1,31 +1,24 @@
 #!/bin/bash
 #PBS -q standard
-#PBS -l select=1:ncpus=16:mem=250gb:ngpus=1:pcmem=16gb
-### Specify a name for the job
-#PBS -N bert_lex_lex
-### Specify the group name
+#PBS -l select=1:ncpus=1:mem=16gb:pcmem=16gb:ngpus=1
 #PBS -W group_list=msurdeanu
-### Used if job requires partial node only
-#PBS -l place=free:exclhost
-### CPUtime required in hhh:mm:ss.
-### Walltime is how long your job will run
-#PBS -l walltime=48:00:00
-
-
-### Optional. Request email when job begins and ends
-# PBS -m bea
-### Optional. Specify email address to use for notification
-# PBS -M mithunpaul@email.arizona.edu
-
-### Joins standard error and standard out
+#PBS -l walltime=00:10:00
 #PBS -j oe
 
 
-module load singularity/3.2.1
+cd /home/u11/mithunpaul/
+module load cuda10/10.1
+module load python/3.8
+mkdir my_virtual_env
+python3 -m venv my_virtual_env
+source my_virtual_env/bin/activate
+pip install torch torchvision
+
+#####my code part
 export PYTHONPATH="/home/u11/mithunpaul/sentence-transformers/"
 cd /home/u11/mithunpaul/sentence-transformers
 pip install -r requirements.txt
-pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.htm
+###pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.htm
 cd /home/u11/mithunpaul/sentence-transformers/examples
 bash get_convert_zip_fact_verification_files.sh
 cd /home/u11/mithunpaul/sentence-transformers/examples/training_transformers
