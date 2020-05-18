@@ -30,7 +30,7 @@ def initialize_comet():
     return comet_Expt_object
 
 #### Just some code to print debug information to stdout
-logging.basicConfig(filename='bert.log',level=logging.DEBUG)
+logging.basicConfig(filename='bert.log',level=logging.INFO)
 
 
 comet_value_updater=initialize_comet()
