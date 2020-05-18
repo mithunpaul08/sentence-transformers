@@ -2,16 +2,14 @@
 #PBS -q standard
 #PBS -l select=1:ncpus=16:mem=250gb:ngpus=1:pcmem=16gb
 ### Specify a name for the job
-#PBS -N elgato_
+#PBS -N bert_lex_lex
 ### Specify the group name
 #PBS -W group_list=msurdeanu
 ### Used if job requires partial node only
 #PBS -l place=free:exclhost
 ### CPUtime required in hhh:mm:ss.
-### Leading 0's can be omitted e.g 48:0:0 sets 48 hours
-#PBS -l cput=672:00:00
 ### Walltime is how long your job will run
-#PBS -l walltime=24:00:00
+#PBS -l walltime=48:00:00
 
 
 ### Optional. Request email when job begins and ends
