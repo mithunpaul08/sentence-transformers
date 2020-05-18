@@ -15,3 +15,4 @@ for each in datasets/rte/fnc/allnli/*;
 do
 gzip  $each
 done
+rm bert.log

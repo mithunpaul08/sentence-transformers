@@ -20,20 +20,17 @@ import logging
 from datetime import datetime
 import sys
 from sentence_transformers.readers import NLIDataReader
-
+import os
 
 def initialize_comet():
     # for drawing graphs on comet:
-    comet_Expt_object=None
     comet_Expt_object = Experiment(api_key="XUbi4cShweB6drrJ5eAKMT6FT", project_name="rte-decomp-attention")
-
+    # comet_Expt_object = ExistingExperiment(api_key="XUbi4cShweB6drrJ5eAKMT6FT",previous_experiment="8ee6669d2b854eaf834f8a56eaa9f235")
     return comet_Expt_object
 
 #### Just some code to print debug information to stdout
-logging.basicConfig(filename='example.log',level=logging.DEBUG)
-logging.debug('This message should go to the log file')
-logging.info('So should this')
-logging.warning('And this, too')
+logging.basicConfig(filename='bert.log',level=logging.INFO)
+
 
 comet_value_updater=initialize_comet()
 if (comet_value_updater) is not None:
@@ -49,6 +46,8 @@ model_name = sys.argv[1] if len(sys.argv) > 1 else 'bert-base-uncased'
 
 # Read the dataset
 batch_size = 32
+abs=os.path.abspath(os.path.dirname(__file__))
+os.chdir(abs)
 nli_reader_fever = NLIDataReader('../datasets/rte/fever/allnli')
 nli_reader_fnc = NLIDataReader('../datasets/rte/fnc/allnli')
 train_num_labels = nli_reader_fever.get_num_labels()
