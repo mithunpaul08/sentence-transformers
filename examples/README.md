@@ -1,16 +1,16 @@
-#to run training on fever files
-pip install -r requirements.txt
+# to run training on fever files and test on fnc
+- `pip install -r requirements.txt`
 
-export PYTHONPATH="/Users/mordor/research/sentence-transformers/"
+- add this to your ~/.bashrc preferably
+`export PYTHONPATH="/Users/mordor/research/sentence-transformers/"`
 
-install right version of pytorch manually.
+- install right version of pytorch manually.
 eg:`pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html`
 
-pip install -U sentence_transformers
-./get_convert_zip_fact_verification_file.sh
+- `./get_convert_zip_fact_verification_file.sh`
 
-cd sentence-transformers/examples.
-python trainining_transformers/training_nli.py
+- `cd sentence-transformers/examples`
+- `python trainining_transformers/training_nli.py`
 
 or on hpc
 cd examples/training_transformers
