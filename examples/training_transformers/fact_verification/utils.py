@@ -30,6 +30,8 @@ def read_fever_format_write_to_allnli_format(train_lex_file,run_name,output_fold
         for label in (claim_ev_lex.label):
             outfile.write(label.lower()+"\n")
 
-#convert from fever format. this should be run only once
+#convert from fever format. this should be run only once ever ideally
 read_fever_format_write_to_allnli_format("datasets/rte/fever/train/fever_train_lex.jsonl","train","datasets/rte/fever/allnli")
 read_fever_format_write_to_allnli_format("datasets/rte/fever/dev/fever_dev_lex.jsonl","dev","datasets/rte/fever/allnli")
+read_fever_format_write_to_allnli_format("datasets/rte/fnc/dev/fnc_dev_lex.jsonl","dev","datasets/rte/fnc/allnli")
+
