@@ -25,16 +25,16 @@ from sentence_transformers.readers import NLIDataReader
 def initialize_comet():
     # for drawing graphs on comet:
     comet_Expt_object=None
-    comet_Expt_object = Experiment(api_key="XUbi4cShweB6drrJ5eAKMT6FT", project_name="rte-decomp-attention",log_code=False
-                                   ,log_env_details=False)
+    comet_Expt_object = Experiment(api_key="XUbi4cShweB6drrJ5eAKMT6FT", project_name="rte-decomp-attention")
 
     return comet_Expt_object
 
 #### Just some code to print debug information to stdout
-logging.basicConfig(format='%(asctime)s - %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S',
-                    level=logging.INFO,
-                    handlers=[LoggingHandler()])
+logging.basicConfig(filename='example.log',level=logging.DEBUG)
+logging.debug('This message should go to the log file')
+logging.info('So should this')
+logging.warning('And this, too')
+
 comet_value_updater=initialize_comet()
 if (comet_value_updater) is not None:
     hyper_params = vars()
@@ -84,7 +84,7 @@ evaluator = LabelAccuracyEvaluator(dev_dataloader,softmax_model = train_loss,gra
 
 
 # Configure the training
-num_epochs = 1
+num_epochs = 10
 
 warmup_steps = math.ceil(len(train_dataloader) * num_epochs / batch_size * 0.1) #10% of train data for warm-up
 logging.info("Warmup-steps: {}".format(warmup_steps))
