@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-rm -rf datasets/rte
 ./get_fact_verification_files.sh
 mkdir -p datasets/rte/fever/allnli/
 mkdir -p datasets/rte/fnc/allnli/
