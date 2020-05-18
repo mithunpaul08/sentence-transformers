@@ -20,7 +20,7 @@ import logging
 from datetime import datetime
 import sys
 from sentence_transformers.readers import NLIDataReader
-
+import os
 
 def initialize_comet():
     # for drawing graphs on comet:
@@ -47,6 +47,8 @@ model_name = sys.argv[1] if len(sys.argv) > 1 else 'bert-base-uncased'
 
 # Read the dataset
 batch_size = 32
+abs=os.path.abspath(os.path.dirname(__file__))
+os.chdir(abs)
 nli_reader_fever = NLIDataReader('../datasets/rte/fever/allnli')
 nli_reader_fnc = NLIDataReader('../datasets/rte/fnc/allnli')
 train_num_labels = nli_reader_fever.get_num_labels()
