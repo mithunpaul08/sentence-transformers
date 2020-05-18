@@ -14,4 +14,4 @@ for each in datasets/rte/fnc/allnli/*;
 do
 gzip  $each
 done
-rm bert.log
+rm /home/u11/mithunpaul/sentence-transformers/examples/training_transformers/bert.log

@@ -12,15 +12,15 @@ module load python/3.8
 mkdir my_virtual_env
 python3 -m venv my_virtual_env
 source my_virtual_env/bin/activate
-pip install torch torchvision
+##pip install torch torchvision
 
 #####my code part
 export PYTHONPATH="/home/u11/mithunpaul/sentence-transformers/"
 cd /home/u11/mithunpaul/sentence-transformers
 pip install -r requirements.txt
-###pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.htm
+##pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.htm
 cd /home/u11/mithunpaul/sentence-transformers/examples
 bash get_convert_zip_fact_verification_files.sh
 cd /home/u11/mithunpaul/sentence-transformers/examples/training_transformers
-python training_nli.py
+python3 training_nli.py
 
