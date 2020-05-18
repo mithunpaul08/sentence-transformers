@@ -20,6 +20,8 @@ cd /home/u11/mithunpaul/sentence-transformers
 pip install -r requirements.txt
 pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.htm
 cd /home/u11/mithunpaul/sentence-transformers/examples
+bash get_fact_verification_files.sh
+bash reduce_size_fact_verification_files.sh
 bash get_convert_zip_fact_verification_files.sh
 cd /home/u11/mithunpaul/sentence-transformers/examples/training_transformers
 python3 training_nli.py
