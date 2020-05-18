@@ -32,7 +32,7 @@ def initialize_comet():
 #### Just some code to print debug information to stdout
 logging.basicConfig(format='%(asctime)s - %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
-                    level=logging.INFO,
+                    level=logging.ERROR,
                     handlers=[LoggingHandler()])
 comet_value_updater=initialize_comet()
 if (comet_value_updater) is not None:
@@ -67,7 +67,7 @@ model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
 
 
 # Convert the dataset to a DataLoader ready for training
-logging.info("Read fever train dataset")
+logging.error("Read fever train dataset")
 
 train_data = SentencesDataset(nli_reader_fever.get_examples('train.gz'), model=model)
 train_dataloader = DataLoader(train_data, shuffle=True, batch_size=batch_size)
@@ -75,7 +75,7 @@ train_loss = losses.SoftmaxLoss(model=model, sentence_embedding_dimension=model.
 
 
 
-logging.info("Read fever dev dataset")
+logging.error("Read fever dev dataset")
 dev_data = SentencesDataset(nli_reader_fever.get_examples('dev.gz'), model=model)
 dev_dataloader = DataLoader(dev_data, shuffle=False, batch_size=batch_size)
 evaluator = LabelAccuracyEvaluator(dev_dataloader,softmax_model = train_loss,grapher=comet_value_updater)
@@ -108,7 +108,7 @@ model.fit(train_objectives=[(train_dataloader, train_loss)],
 ##############################################################################
 
 
-logging.info("Read fnc dev dataset")
+logging.error("Read fnc dev dataset")
 
 model = SentenceTransformer(model_save_path)
 test_data = SentencesDataset(nli_reader_fnc.get_examples('dev.gz'), model=model)
