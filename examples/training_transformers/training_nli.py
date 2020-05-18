@@ -30,10 +30,8 @@ def initialize_comet():
     return comet_Expt_object
 
 #### Just some code to print debug information to stdout
-logging.basicConfig(filename='example.log',level=logging.DEBUG)
-logging.debug('This message should go to the log file')
-logging.info('So should this')
-logging.warning('And this, too')
+logging.basicConfig(filename='bert.log',level=logging.DEBUG)
+
 
 comet_value_updater=initialize_comet()
 if (comet_value_updater) is not None:
