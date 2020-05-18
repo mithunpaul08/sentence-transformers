@@ -54,6 +54,7 @@ fi
 
 
 #######test partition#########which usually is the fnc-dev loaded so that we can test on it while training itself.
+mkdir -p datasets/rte/fnc/dev/
 
 FILE=datasets/rte/fnc/dev/fnc_dev_lex.jsonl
 if test -f "$FILE";then
@@ -62,7 +63,7 @@ else
     wget https://storage.googleapis.com/fact_verification_mithun_files/fake_news_challenge_lexicalized_data/used_in_emnlp2019_bert/FNC_dev_lex.jsonl -O $FILE
 fi
 
-mkdir -p datasets/rte/fnc/dev/
+
 FILE=datasets/rte/fnc/dev/fnc_dev_delex.jsonl
 if test -f "$FILE";then
     echo "$FILE exists"

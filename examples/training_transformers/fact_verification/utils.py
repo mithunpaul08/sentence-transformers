@@ -31,15 +31,26 @@ def read_fever_format_write_to_allnli_format(input_file, run_name, output_folder
             outfile.write(label.lower()+"\n")
 abs=os.path.abspath(os.path.dirname(__file__))
 os.chdir(abs)
-input_path_base="../../datasets/rte/"
+path_base= "../../datasets/rte/"
 
 #convert from fever format. this should be run only once ever ideally-per every type of file.
-input_file=(os.path.join(input_path_base,"fever/train/fever_train_lex.jsonl"))
-read_fever_format_write_to_allnli_format(input_file,"train","datasets/rte/fever/allnli")
-#read_fever_format_write_to_allnli_format("datasets/rte/fever/dev/fever_dev_lex.jsonl","dev","datasets/rte/fever/allnli")
-#read_fever_format_write_to_allnli_format("datasets/rte/fnc/dev/fnc_dev_lex.jsonl","dev","datasets/rte/fnc/allnli")
+# input_file=(os.path.join(path_base,"fever/train/fever_train_lex.jsonl"))
+# read_fever_format_write_to_allnli_format(input_file,"train","datasets/rte/fever/allnli")
+#
+# input_file=(os.path.join(path_base,"fever/dev/fever_dev_lex.jsonl"))
+# read_fever_format_write_to_allnli_format(input_file,"dev","datasets/rte/fever/allnli")
+#
+# input_file=(os.path.join(path_base,"fnc/dev/fnc_dev_lex.jsonl"))
+# read_fever_format_write_to_allnli_format(input_file,"dev","datasets/rte/fnc/allnli")
 
 ###---all delexicalized files
-#input_file=(os.path.join(input_path_base,"fever/train/fever_train_delex.jsonl"))
-#read_fever_format_write_to_allnli_format(input_file,"train","datasets/rte/fever/allnli")
+input_file=(os.path.join(path_base, "fever/train/fever_train_delex.jsonl"))
+output_folder=(os.path.join(path_base, "fever/allnli"))
+read_fever_format_write_to_allnli_format(input_file,"train",output_folder)
+input_file=(os.path.join(path_base, "fever/dev/fever_dev_delex.jsonl"))
+read_fever_format_write_to_allnli_format(input_file,"dev",output_folder)
+
+output_folder=(os.path.join(path_base, "fnc/allnli"))
+input_file=(os.path.join(path_base, "fnc/dev/fnc_dev_delex.jsonl"))
+read_fever_format_write_to_allnli_format(input_file,"dev",output_folder)
 
