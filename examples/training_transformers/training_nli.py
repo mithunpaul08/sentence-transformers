@@ -24,9 +24,8 @@ import os
 
 def initialize_comet():
     # for drawing graphs on comet:
-    #comet_Expt_object = Experiment(api_key="XUbi4cShweB6drrJ5eAKMT6FT", project_name="rte-decomp-attention")
-    comet_Expt_object = ExistingExperiment(api_key="XUbi4cShweB6drrJ5eAKMT6FT",
-                                           previous_experiment="8ee6669d2b854eaf834f8a56eaa9f235")
+    comet_Expt_object = Experiment(api_key="XUbi4cShweB6drrJ5eAKMT6FT", project_name="rte-decomp-attention")
+    # comet_Expt_object = ExistingExperiment(api_key="XUbi4cShweB6drrJ5eAKMT6FT",previous_experiment="8ee6669d2b854eaf834f8a56eaa9f235")
     return comet_Expt_object
 
 #### Just some code to print debug information to stdout
