@@ -48,8 +48,9 @@ model_name = sys.argv[1] if len(sys.argv) > 1 else 'bert-base-uncased'
 
 # Read the dataset
 batch_size = 32
-nli_reader = NLIDataReader('../datasets/rte/fever/allnli')
-train_num_labels = nli_reader.get_num_labels()
+nli_reader_fever = NLIDataReader('../datasets/rte/fever/allnli')
+nli_reader_fnc = NLIDataReader('../datasets/rte/fnc/allnli')
+train_num_labels = nli_reader_fever.get_num_labels()
 model_save_path = 'output/training_nli_'+model_name.replace("/", "-")+'-'+datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
 
@@ -66,21 +67,23 @@ model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
 
 
 # Convert the dataset to a DataLoader ready for training
-logging.info("Read AllNLI train dataset")
-print("printing Read AllNLI train dataset")
-train_data = SentencesDataset(nli_reader.get_examples('train.gz'), model=model)
+logging.info("Read fever train dataset")
+
+train_data = SentencesDataset(nli_reader_fever.get_examples('train.gz'), model=model)
 train_dataloader = DataLoader(train_data, shuffle=True, batch_size=batch_size)
 train_loss = losses.SoftmaxLoss(model=model, sentence_embedding_dimension=model.get_sentence_embedding_dimension(), num_labels=train_num_labels)
 
 
 
-logging.info("Read STSbenchmark dev dataset")
-dev_data = SentencesDataset(nli_reader.get_examples('dev.gz'), model=model)
+logging.info("Read fever dev dataset")
+dev_data = SentencesDataset(nli_reader_fever.get_examples('dev.gz'), model=model)
 dev_dataloader = DataLoader(dev_data, shuffle=False, batch_size=batch_size)
 evaluator = LabelAccuracyEvaluator(dev_dataloader,softmax_model = train_loss,grapher=comet_value_updater)
 
+
+
 # Configure the training
-num_epochs = 10
+num_epochs = 1
 
 warmup_steps = math.ceil(len(train_dataloader) * num_epochs / batch_size * 0.1) #10% of train data for warm-up
 logging.info("Warmup-steps: {}".format(warmup_steps))
@@ -100,12 +103,15 @@ model.fit(train_objectives=[(train_dataloader, train_loss)],
 
 ##############################################################################
 #
-# Load the stored model and evaluate its performance on STS benchmark dataset
+# Load the stored model and evaluate its performance on fnc dataset
 #
 ##############################################################################
 
-# model = SentenceTransformer(model_save_path)
-# test_data = SentencesDataset(examples=sts_reader.get_examples("sts-test.csv"), model=model)
-# test_dataloader = DataLoader(test_data, shuffle=False, batch_size=batch_size)
-# evaluator = LabelAccuracyEvaluator(test_dataloader)
-# model.evaluate(evaluator)
+
+logging.info("Read fnc dev dataset")
+
+model = SentenceTransformer(model_save_path)
+test_data = SentencesDataset(nli_reader_fnc.get_examples('dev.gz'), model=model)
+test_dataloader = DataLoader(test_data, shuffle=False, batch_size=batch_size)
+evaluator = LabelAccuracyEvaluator(test_dataloader,softmax_model = train_loss,grapher=comet_value_updater)
+model.evaluate(evaluator)
