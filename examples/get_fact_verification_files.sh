@@ -22,7 +22,12 @@ FILE=datasets/rte/fever/train/fever_train_delex.jsonl
 if test -f "$FILE";then
     echo "$FILE exists"
 else
+    #for oaner :
     wget https://storage.googleapis.com/fact_verification_mithun_files/fever_delexicalized/used_in_emnlp2019_bert/fever_train_smart_ner.jsonl -O $FILE
+    #for simpler ner:
+    #wget https://storage.googleapis.com/fact_verification_mithun_files/fever_delexicalized/used_in_emnlp2019_bert/fever_train_simple_ner.jsonl -O $FILE
+
+
 fi
 
 
@@ -33,6 +38,7 @@ if test -f "$FILE";then
     echo "$FILE exists"
 else
     wget https://storage.googleapis.com/fact_verification_mithun_files/fever_lexicalized/used_in_emnlp2019_bert/fever_dev_lex.jsonl -O $FILE
+
 fi
 
 
@@ -40,11 +46,14 @@ FILE=datasets/rte/fever/dev/fever_dev_delex.jsonl
 if test -f "$FILE";then
     echo "$FILE exists"
 else
+    #for oaner
     wget https://storage.googleapis.com/fact_verification_mithun_files/fever_delexicalized/used_in_emnlp2019_bert/fever_dev_smart_ner.jsonl -O $FILE
+    #for simpler ner:
+    #wget https://storage.googleapis.com/fact_verification_mithun_files/fever_delexicalized/used_in_emnlp2019_bert/fever_dev_simple_ner.jsonl -O $FILE
 fi
 
 
-#######test partition#########
+#######test partition#########which usually is the fnc-dev loaded so that we can test on it while training itself.
 
 FILE=datasets/rte/fnc/dev/fnc_dev_lex.jsonl
 if test -f "$FILE";then
