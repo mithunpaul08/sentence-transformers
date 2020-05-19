@@ -1,18 +1,19 @@
 #!/bin/bash
 #PBS -q standard
-#PBS -l select=1:ncpus=1:mem=16gb:pcmem=16gb:ngpus=1
+#PBS -l select=1:ncpus=28:mem=168gb:pcmem=6gb:ngpus=1:os7=True
 #PBS -W group_list=msurdeanu
 #PBS -l walltime=00:10:00
 #PBS -j oe
 
 
 cd /home/u11/mithunpaul/
-module load cuda10/10.1
-module load python/3.8
+module load cuda90/neuralnet/7/7.3.1.20
+module load python/3.6/3.6.5
 rm -rf my_virtual_env
 mkdir my_virtual_env
 python3 -m venv my_virtual_env
 source my_virtual_env/bin/activate
+pip install torch==1.5.0+cu92 torchvision==0.6.0+cu92 -f https://download.pytorch.org/whl/torch_stable.html
 
 
 #####my code part
