@@ -23,8 +23,8 @@ cd /home/u11/mithunpaul/sentence-transformers
 cd /home/u11/mithunpaul/sentence-transformers/examples
 
 #remove these two lines if you want to run on full data
-bash get_fact_verification_files.sh
-bash reduce_size_fact_verification_files.sh
+#bash get_fact_verification_files.sh
+#bash reduce_size_fact_verification_files.sh
 
 bash get_convert_zip_fact_verification_files.sh
 cd /home/u11/mithunpaul/sentence-transformers/examples/training_transformers
