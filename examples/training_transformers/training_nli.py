@@ -77,7 +77,8 @@ train_loss = losses.SoftmaxLoss(model=model, sentence_embedding_dimension=model.
 
 
 logging.error("Read fever dev dataset")
-dev_data = SentencesDataset(nli_reader_fever.get_examples('dev.gz'), model=model)
+#dev_data = SentencesDataset(nli_reader_fever.get_examples('dev.gz'), model=model)
+dev_data = SentencesDataset(nli_reader_fnc.get_examples('dev.gz'), model=model)
 dev_dataloader = DataLoader(dev_data, shuffle=False, batch_size=batch_size)
 evaluator = LabelAccuracyEvaluator(dev_dataloader,softmax_model = train_loss,grapher=comet_value_updater)
 
@@ -85,7 +86,7 @@ if torch.cuda.is_available():
     torch.cuda.set_device(0)
 
 # Configure the training
-num_epochs = 1
+num_epochs = 25
 
 warmup_steps = math.ceil(len(train_dataloader) * num_epochs / batch_size * 0.1) #10% of train data for warm-up
 logging.info("Warmup-steps: {}".format(warmup_steps))
