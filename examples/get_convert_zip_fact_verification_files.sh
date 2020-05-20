@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 ./get_fact_verification_files.sh
 mkdir -p datasets/rte/fever/allnli/
 mkdir -p datasets/rte/fnc/allnli/
@@ -15,4 +14,4 @@ for each in datasets/rte/fnc/allnli/*;
 do
 gzip  $each
 done
-rm bert.log
+rm /home/u11/mithunpaul/sentence-transformers/examples/training_transformers/bert.log
